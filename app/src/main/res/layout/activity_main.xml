@@ -1,42 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/black_shade_1">
 
-    <EditText
-        android:id="@+id/input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:hint="Enter the note here"
-        android:textSize="16sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/addButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:backgroundTint="#000"
-        android:onClick="submitData"
-        android:text="Submit"
-        android:textColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/input" />
-
+    <!--recycler view for displaying all notes-->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/notesRV"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/addButton"
-        tools:listitem="@layout/item_note" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
+        />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!--fab for adding a new note-->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/idFAB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        android:src="@drawable/ic_baseline_add_24"
+        app:backgroundTint="#FFFFFF" />
+
+</RelativeLayout>

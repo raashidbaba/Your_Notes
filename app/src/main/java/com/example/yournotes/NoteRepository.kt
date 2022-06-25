@@ -15,5 +15,10 @@ class NoteRepository (private val noteDao: NoteDao){
     //for deleting notes
     suspend fun delete(note: Note){
         noteDao.Delete(note)
+
+    }
+    //for updating notes
+    suspend fun update(note: Note){
+        noteDao.Update(note)
     }
 }

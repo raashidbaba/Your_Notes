@@ -9,7 +9,9 @@ import androidx.room.PrimaryKey
 
 // on below line we are specifying our column info
 // and inside that we are passing our column name
-class Note(@ColumnInfo(name = "text")val text: String) {
+class Note(@ColumnInfo(name = "title")val noteTitle: String,
+           @ColumnInfo(name = "description")val noteDescription: String,
+           @ColumnInfo(name = "timesStamp")val timesStamp: String) {
 
     // on below line we are specifying our key and
     // then auto generate as true and we are

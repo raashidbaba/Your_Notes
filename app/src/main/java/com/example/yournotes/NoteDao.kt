@@ -23,4 +23,7 @@ interface NoteDao {
     // we have to get the data.
     @Query(value = "SELECT * from NOTES_TABLE order by id ASC")
     fun getAllNotes(): LiveData<List<Note>>
+
+    @Update
+    fun Update(note: Note)
 }
