@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
+import android.widget.Toast.makeText
 import androidx.recyclerview.widget.RecyclerView
 
 class NotesRVAdapter(private val context: Context, private val listener: NoteClickDeleteInterface,private val secondListener: NoteClickInterface) :
@@ -20,22 +22,26 @@ class NotesRVAdapter(private val context: Context, private val listener: NoteCli
         val deleteIV = itemView.findViewById<ImageView>(R.id.idIVDelete)
         //NOtE: add the timesStamp
         val dateTV = itemView.findViewById<TextView>(R.id.idTVDate)
+
     }
 
     //creates the items
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
-        val viewHolder =
-            NoteViewHolder(LayoutInflater.from(context)
-                .inflate(R.layout.item_note, parent, false))
+        val itemView = LayoutInflater.from(parent.context).inflate(
+            R.layout.item_note,
+            parent, false)
 
-        viewHolder.deleteIV.setOnClickListener { it: View ->
-            listener.onDeleteIconClick(allNote[viewHolder.adapterPosition])
+      /*  val viewHolder =
+            (LayoutInflater.from(context)
+                .inflate(R.layout.item_note, parent, false))*/
 
-            viewHolder.itemView.setOnClickListener {
+
+        /*      viewHolder.itemView.setOnClickListener {       ->
                 secondListener.onNoteClick(allNote[viewHolder.adapterPosition])
             }
-        }
-        return viewHolder
+        }*/
+
+        return NoteViewHolder(itemView)
     }
 
     //binds the data with the item
@@ -46,6 +52,14 @@ class NotesRVAdapter(private val context: Context, private val listener: NoteCli
         holder.textView.text = secondNote.text*/
         holder.noteTV.setText(allNote.get(position).noteTitle)
         holder.dateTV.setText("Last Updated : " + allNote.get(position).timesStamp)
+
+        holder.deleteIV.setOnClickListener { it: View ->
+            listener.onDeleteIconClick(allNote.get(position))
+        }
+            holder.itemView.setOnClickListener { it: View ->
+                secondListener.onNoteClick(allNote.get(position))
+
+        }
     }
 
     //total number of items in the list
@@ -65,4 +79,5 @@ interface NoteClickDeleteInterface {
 }
 interface NoteClickInterface{
     fun onNoteClick(note: Note)
+
 }

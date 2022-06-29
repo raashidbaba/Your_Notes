@@ -70,7 +70,9 @@ lateinit var addFAB: FloatingActionButton
     }
 
     override fun onNoteClick(note: Note) {
-        // opening a new intent and passing a data to it.
+     //   Toast.makeText(this, "${note.noteTitle} Deleted", Toast.LENGTH_LONG).show()
+      //  Toast.makeText(this,"clicked",Toast.LENGTH_LONG).show()
+       // opening a new intent and passing a data to it.
         val intent = Intent(this@MainActivity, AddEditNoteActivity::class.java)
         intent.putExtra("noteType", "Edit")
         intent.putExtra("noteTitle", note.noteTitle)
@@ -78,7 +80,9 @@ lateinit var addFAB: FloatingActionButton
         intent.putExtra("noteId", note.id)
         startActivity(intent)
         this.finish()
+
     }
+
 }
 
 

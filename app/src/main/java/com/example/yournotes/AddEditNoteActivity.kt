@@ -1,10 +1,12 @@
 package com.example.yournotes
     import android.content.Intent
     import android.os.Bundle
+    import android.view.View
     import android.widget.Button
     import android.widget.EditText
     import android.widget.Toast
     import androidx.appcompat.app.AppCompatActivity
+    import androidx.activity.OnBackPressedCallback
     import androidx.lifecycle.ViewModelProvider
     import java.text.SimpleDateFormat
     import java.util.*
@@ -82,6 +84,28 @@ package com.example.yournotes
                 startActivity(Intent(applicationContext, MainActivity::class.java))
                 this.finish()
             }
+
+            /*      override fun onBackPressed() {
+
+                      //Display the name of our current Activity/class as it was declared in the source code
+                      val text = "Hello from " + this.javaClass.simpleName
+
+                      val duration = Toast.LENGTH_SHORT
+                      val toast = Toast.makeText(applicationContext, text, duration)
+                      toast.show()
+
+                      finish()
+                  }*/
+        }
+
+        override fun onBackPressed() {
+            super.onBackPressed()
+            val intent = Intent(this,MainActivity::class.java)
+            startActivity(intent)
+           /* Intent i= new Intent(your_present_activity.this,the_activity_you_want_to_jump_to.class);
+            startActivity(i);
+*/
+            finish()
         }
     }
 
